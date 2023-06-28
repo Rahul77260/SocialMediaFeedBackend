@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.Socialmedia.Socialmedia.dao.Postrepo;
-import com.Socialmedia.Socialmedia.dao.Commentrepo;
+
 import com.Socialmedia.Socialmedia.dao.Reactionrepo;
 import com.Socialmedia.Socialmedia.service.Postservice;
 import com.Socialmedia.Socialmedia.model.Post;
-import com.Socialmedia.Socialmedia.model.Comments;
+
 import com.Socialmedia.Socialmedia.model.Reaction;
 
 import org.springframework.http.HttpStatus;
@@ -28,8 +28,7 @@ public class PostController {
   
 @Autowired
   private Postrepo postrepo;
-    @Autowired
-  private Commentrepo commentrepo;
+    
   @Autowired
   private Reactionrepo reactionrepo;
   @Autowired
@@ -50,11 +49,7 @@ public class PostController {
         post1.setDescription("Doing programming");
         post1.setTimestamp(timestamp);
         postrepo.save(post1);
-        Comments comment=new Comments();
-        comment.setComment_description("ok i am good");
-        comment.setCommentedBy("Tenzin");
-        comment.setTimestamp(timestamp);
-        commentrepo.save(comment);
+      
         Reaction reaction=new Reaction();
         reaction.setLikedDislikedBy("Suraj");
        reaction.setReactionType(Reaction.ReactionType.DISLIKE);

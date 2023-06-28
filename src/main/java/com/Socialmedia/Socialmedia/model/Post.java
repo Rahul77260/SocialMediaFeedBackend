@@ -6,10 +6,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 
 import java.time.Instant;
-
+import java.util.*;
 
 @Entity
 public class Post {
@@ -21,9 +23,9 @@ public class Post {
     private String description;
      private Instant timestamp;
 
-
-    //  @OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="post")
-    // private List<Comments> comment=new ArrayList<>();
+      
+     @OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="post")
+    private List<Comments> comment=new ArrayList<>();
     // @OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="post")
     // private List<Reaction> reaction=new ArrayList<>();
 public int getId() {
